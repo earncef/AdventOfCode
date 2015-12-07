@@ -1,8 +1,7 @@
 <?php
 $input = explode("\n", str_replace(' o', 'o', trim(file_get_contents('input'))));
 ini_set('memory_limit', '300M');
-$lights = array_fill(0, 1000, array_fill(0, 1000, 0));
-$lights2 = array_fill(0, 1000, array_fill(0, 1000, 0));
+$lights = $lights2 = array_fill(0, 1000, array_fill(0, 1000, 0));
 
 foreach ($input as $instruction) {
     $split = explode(' ', $instruction);
