@@ -1,7 +1,5 @@
 <?php
-$input = file_get_contents('input');
-$rawLength = strlen(str_replace("\n", '', $input));
-$compute = create_function('', 'return ' . str_replace("\n", '.', $input) . ';');
-$total = $rawLength - strlen($compute());
-$total2 = strlen(str_replace("\n", '""', addslashes($input))) + 2 - $rawLength;
+$input = str_replace("\n", '', file_get_contents('input'), $count);
+$total = strlen($input) - strlen(stripcslashes($input)) + ($count + 1)  * 2;
+$total2 = strlen(addcslashes($input, "\"\\")) + ($count + 1)  * 2 - strlen($input);
 echo "$total $total2";
