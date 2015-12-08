@@ -1,10 +1,6 @@
 <?php
-$input = explode("\n", file_get_contents('input'));
-$total = $total2 = 0;
-foreach($input as $line) {
-    $compute = create_function('', 'return ' . $line . ';');
-    $new = '"' . addslashes($line) . '"';
-    $total += strlen($line) - strlen($compute());
-    $total2 += strlen($new) - strlen($line);
-}
+$input = file_get_contents('input');
+$compute = create_function('', 'return ' . str_replace("\n",'.',$input) . ';');
+$total = strlen(str_replace("\n", '', $input)) - strlen($compute());
+$total2 = strlen(str_replace("\n", '""', addslashes($input))) + 2 - strlen(str_replace("\n", '', $input));
 echo "$total $total2";
