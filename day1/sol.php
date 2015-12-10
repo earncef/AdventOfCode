@@ -1,6 +1,4 @@
 <?php
-$input = file_get_contents('input');
-$compute = create_function('', 'return ' . str_replace(['(', ')'], ['+1', '-1'], $input) . ';');
-for($position = 1; $input[0] != ')' && $p = strpos($input, '()') + 1; $position += 2)
-    $input = substr_replace($input, '', $p - 1, 2);
-echo "{$compute()} {$position}";
+$input = str_replace('(', '1', str_replace(')', '0', file_get_contents('input'), $count1), $count2);
+for ($s = $p = 0; $s != -1;$p++) $s += $input[$p] ? 1: -1;
+echo $count2-$count1, ' ', $p;
