@@ -14,8 +14,7 @@ function process($input, $result = []) {
             }
             $split[0] = str_replace($var, $result[$var], $split[0]);
         }
-        $compute = create_function('', 'return ' . $split[0] . ';');
-        $result[$split[1]] = $compute();
+        $result[$split[1]] = eval('return ' . $split[0] . ';');
     }
     return $result['a'];
 }
