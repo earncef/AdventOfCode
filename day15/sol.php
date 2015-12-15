@@ -7,13 +7,12 @@ function r($base, $i, $inc) {
 }
 
 function process($matches, $n, &$results = [], $calTot = null, $cap = 0, $dur = 0, $fla = 0, $tex = 0, $cal = 0) {
-    if ($n < 1) return;
     $a = array_pop($matches);
     if (!count($matches)) 
         if (null == $calTot || $calTot == $cal + $n * $a[5])
             return $results[] = r($cap,$a[1],$n) * r($dur,$a[2],$n) * r($fla,$a[3],$n) * r($tex,$a[4],$n);
         else return;
-    for ($i = 1; $i <= $n; $i++) 
+    for ($i = 1; $i < $n; $i++) 
         process($matches, $n-$i, $results, $calTot, $cap+$i*$a[1], $dur+$i*$a[2], $fla+$i*$a[3], $tex+$i*$a[4], $cal+$i*$a[5]);
 }
 
