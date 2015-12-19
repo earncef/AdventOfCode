@@ -8,8 +8,8 @@ function process($inputs, $grid, $corners = false) {
             if (($k == $i && $l == $j) || $k < 0 || $l < 0 || $k >= $grid || $l >= $grid) continue;
             if (isset($inputs[$l + $k * $grid])) $sum += $inputs[$l + $k * $grid];
         }
-        if ($inputs[$j + $i * $grid] == 0) $result .= ($sum == 3) ? 1 : 0;
-        else $result .= ($sum == 2 || $sum == 3) ? 1: 0;
+        if ($inputs[$j + $i * $grid]) $result .= ($sum == 2 || $sum == 3) ? 1: 0;
+        else $result .= ($sum == 3) ? 1 : 0;
     }
     if ($corners) $result[0] = $result[$grid-1] = $result[strlen($inputs)-$grid] = $result[strlen($inputs)-1] = 1;
     return $result;
