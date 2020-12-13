@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -53,15 +52,12 @@ func day7part2() int {
 }
 
 func countBags(color string, colorMaps map[string]map[string]int) int {
-	fmt.Println("\n", color)
 	if color == "other" {
 		return 0
 	}
 	total := 0
 	for subColor, count := range colorMaps[color] {
-		fmt.Println(color, ":", subColor, count, total)
 		total += count + count*countBags(subColor, colorMaps)
-		fmt.Println(color, ":", subColor, count, total)
 	}
 	return total
 }
