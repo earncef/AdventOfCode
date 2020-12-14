@@ -35,8 +35,6 @@ func day13() int {
 		}
 		timestamp++
 	}
-
-	return 0
 }
 
 func day13part2() string {
